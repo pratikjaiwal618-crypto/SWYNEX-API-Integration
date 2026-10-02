@@ -1,0 +1,4 @@
+# Local/private configuration files
+.env
+.env.*
+config.js

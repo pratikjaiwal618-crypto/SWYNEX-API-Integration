@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobeScope — API Country Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-logo">🌍</div>
+      <div><h1>GlobeScope</h1><p>Live Country Explorer</p></div>
+    </div>
+    <div class="top-actions">
+      <button id="themeBtn" class="icon-btn">☾</button>
+      <button id="refreshBtn" class="btn secondary">↻ Refresh</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">SWYNEX • TASK 3 • API INTEGRATION</span>
+        <h2>Explore every country with live API data.</h2>
+        <p>Search, filter, sort and open detailed country information. Country flags are displayed as real images from the REST Countries flag CDN.</p>
+      </div>
+      <div class="stat-card">
+        <strong id="count">0</strong><span>Countries loaded</span>
+      </div>
+    </section>
+
+    <section class="api-panel">
+      <div class="api-title">
+        <div><strong>🔐 API Connection</strong><small>Your API key is saved only in this browser.</small></div>
+        <span id="apiState" class="api-dot">●</span>
+      </div>
+      <div class="api-row">
+        <input id="apiKeyInput" type="password" placeholder="Paste your REST Countries API key here">
+        <button id="saveKeyBtn" class="btn primary">Save & Connect</button>
+      </div>
+      <p class="api-note">Do not upload your API key to GitHub. This project stores it in browser localStorage only.</p>
+    </section>
+
+    <section class="controls">
+      <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search country, capital or region..."></label>
+      <select id="regionFilter"><option value="all">All regions</option><option>Africa</option><option>Americas</option><option>Asia</option><option>Europe</option><option>Oceania</option></select>
+      <select id="sortSelect"><option value="name-asc">Name A–Z</option><option value="name-desc">Name Z–A</option><option value="population-desc">Population high–low</option><option value="population-asc">Population low–high</option></select>
+    </section>
+
+    <div id="status" class="status loading"><span class="spinner"></span><span>Enter your API key and click Save & Connect.</span></div>
+
+    <section id="grid" class="grid"></section>
+    <div id="empty" class="empty hidden"><div>🔎</div><h3>No countries found</h3><p>Try another search term or region.</p></div>
+    <div class="load-wrap"><button id="loadMoreBtn" class="btn primary hidden">Load more</button></div>
+  </main>
+
+  <footer><p>GlobeScope • Built for SWYNEX Frontend Developer Internship • Task 3</p></footer>
+
+  <dialog id="detailsDialog">
+    <button id="closeDialog" class="dialog-close">×</button>
+    <div id="details"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
